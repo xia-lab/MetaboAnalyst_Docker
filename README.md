@@ -51,3 +51,6 @@ root@760b678fd4bf:/# java -jar /opt/payara/payara-micro.jar --deploymentDir /opt
 http://localhost:8080/MetaboAnalyst/
 
 ```
+### Step 4. MetaboAnalyst Docker History
+
+03-08-2018: Added Dockerfile for MetaboAnalyst 4.09
