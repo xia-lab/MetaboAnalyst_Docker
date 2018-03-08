@@ -8,7 +8,7 @@ MetaboAnalyst is a web-application for comprehensive metabolomics data analysis,
 
 ### Step 1. Install Docker
 
-Please follow these directions to download Docker: https://docs.docker.com/install/ 
+Please follow these directions to download Docker: https://docs.docker.com/install/ .
 
 ### Step 2. Download the Git Repository
 
@@ -17,7 +17,7 @@ MetaboAnalyst_Docker is freely available from this GitHub repository. In this re
 ```bash
 # Option A
 # If you want to clone this repository into a different directory (X by default), specify it as the next command-line option, leaving a space between the link and your directory
-$ git clone https:// /Desktop/Metab4_Docker
+$ git clone https://github.com/xia-lab/MetaboAnalyst_Docker /Desktop/Metab4_Docker
 
 ```
 
