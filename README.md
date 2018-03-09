@@ -43,10 +43,10 @@ root@760b678fd4bf:/# Rscript /metab4script.R
 
 # Note you should see "Rserv started in daemon mode" appear in the terminal.
 
-### Step 6: Enter the command to deploy the MetaboAnalyst WAR file
+### Step 5: Enter the command to deploy the MetaboAnalyst WAR file
 root@760b678fd4bf:/# java -jar /opt/payara/payara-micro.jar --deploymentDir /opt/payara/deployments
 
-### Step 7: In your web browser go to the link below. Note that you will have to change the MetaboAnalyst version in the link based on the WAR file 
+### Step 6: In your web browser go to the link below. Note that you will have to change the MetaboAnalyst version in the link based on the WAR file 
 ### The application will take a minute or two to load as the scripts need to be compiled
 http://localhost:8080/MetaboAnalyst/
 
