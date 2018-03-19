@@ -33,7 +33,7 @@ $ cd ~/Desktop/Metab4_Docker
 $ docker build -t metab_docker .
 
 ### Step 3: Run the Dockerfile, the -ti option will open an interactive Ubuntu terminal into the created container and presents a command prompt
-$ docker run -ti --name METAB_DOCKER -p 8080:8080 metab_docker
+$ docker run -ti --rm --name METAB_DOCKER -p 8080:8080 metab_docker
 
 ## The command prompt will look something like below; you are now in the shell
 root@760b678fd4bf:/# 
