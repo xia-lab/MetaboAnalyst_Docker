@@ -24,6 +24,7 @@ RUN apt-get update && \
     oracle-java8-installer \
     oracle-java8-set-default \
     graphviz \
+    imagemagick \
     libcairo2-dev \
     libnetcdf-dev \
     netcdf-bin \
