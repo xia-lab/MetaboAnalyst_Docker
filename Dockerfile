@@ -5,10 +5,9 @@ MAINTAINER Xia Lab "jasmine.chong@mail.mcgill.ca"
 
 LABEL Description = "MetaboAnalyst 4.0, includes the installation of all necessary system requirements including JDK, R plus all relevant packages, and Payara Micro."
 
-USER root
-  
 # Install and set up project dependencies (netcdf library for XCMS, imagemagick and 
-# graphviz libraries for RGraphviz), then purge apt-get lists
+# graphviz libraries for RGraphviz), then purge apt-get lists.
+# Thank you to Jack Howarth for his contributions in improving the Dockerfile.
 
 RUN apt-get update && \
     apt-get install -y software-properties-common sudo 
@@ -25,8 +24,10 @@ RUN apt-get update && \
     oracle-java8-installer \
     oracle-java8-set-default \
     graphviz \
+    imagemagick \
     libcairo2-dev \
     libnetcdf-dev \
+    netcdf-bin \
     libssl-dev \
     libxt-dev \
     libxml2-dev \
@@ -45,7 +46,7 @@ RUN apt-get update && \
 
 # Install all R packages from bioconductor 
 
-RUN R -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("Rserve", "RColorBrewer", "xtable", "fitdistrplus","som", "ROCR", "RJSONIO", "gplots", "e1071", "caTools", "igraph", "randomForest", "Cairo", "pls", "pheatmap", "lattice", "rmarkdown", "knitr", "data.table", "pROC", "Rcpp", "caret", "ellipse", "scatterplot3d", "impute", "pcaMethods", "siggenes", "globaltest", "GlobalAncova", "Rgraphviz", "KEGGgraph", "preprocessCore", "genefilter", "SSPA", "sva", "limma", "pacman", "xcms"))'
+RUN R -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("Rserve", "RColorBrewer", "xtable", "fitdistrplus","som", "ROCR", "RJSONIO", "gplots", "e1071", "caTools", "igraph", "randomForest", "Cairo", "pls", "pheatmap", "lattice", "rmarkdown", "knitr", "data.table", "pROC", "Rcpp", "caret", "ellipse", "scatterplot3d", "impute", "pcaMethods", "siggenes", "globaltest", "GlobalAncova", "Rgraphviz", "KEGGgraph", "preprocessCore", "genefilter", "SSPA", "sva", "limma", "xcms", "lars", "tidyverse", "pacman"))'
 
 ADD rserve.conf /rserve.conf
 ADD metab4script.R /metab4script.R
@@ -72,8 +73,10 @@ ENV PAYARA_MICRO_JAR=$PAYARA_PATH/$PKG_FILE_NAME
 # Default payara ports + rserve to expose
 EXPOSE 4848 8009 8080 8181 6311
 
+# Download and copy MetaboAnalyst war file to deployment directory
+
 ENV METABOANALYST_VERSION 4.09
-ENV METABOANALYST_LINK https://www.dropbox.com/s/adkps7jq810dyl4/MetaboAnalyst-4.09.war?dl=0
+ENV METABOANALYST_LINK https://www.dropbox.com/s/zjdrjddxx4mhvbe/MetaboAnalyst-4.39.war?dl=0
 ENV METABOANALYST_FILE_NAME MetaboAnalyst.war
 
 RUN wget --quiet -O $DEPLOY_DIR/$METABOANALYST_FILE_NAME $METABOANALYST_LINK

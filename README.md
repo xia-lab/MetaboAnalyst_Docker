@@ -53,4 +53,6 @@ http://localhost:8080/MetaboAnalyst/
 ```
 ### Step 4. MetaboAnalyst Docker History
 
+03-23-2018: Bug fixing based on user feedback
+
 03-08-2018: Added Dockerfile for MetaboAnalyst 4.09
