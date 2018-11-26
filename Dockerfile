@@ -1,5 +1,5 @@
-# Use Ubuntu Version 14
-FROM ubuntu:14.04
+# Use Ubuntu Version 16
+FROM ubuntu:16.04
 
 MAINTAINER Xia Lab "jasmine.chong@mail.mcgill.ca"
 
@@ -10,13 +10,13 @@ LABEL Description = "MetaboAnalyst 4.0, includes the installation of all necessa
 # Thank you to Jack Howarth for his contributions in improving the Dockerfile.
 
 RUN apt-get update && \
-    apt-get install -y software-properties-common 
+    apt-get install -y software-properties-common sudo
     
 RUN apt-get update && \
     add-apt-repository ppa:webupd8team/java && \
     apt-get update && \
     echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \ 
-    echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list && \
+    echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" >> /etc/apt/sources.list && \
     gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 && \
     gpg -a --export E084DAB9 | sudo apt-key add - && \
     apt-get update && \
