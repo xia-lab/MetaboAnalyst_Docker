@@ -50,6 +50,9 @@ root@760b678fd4bf:/# java -jar /opt/payara/payara-micro.jar --deploymentDir /opt
 ### The application will take a minute or two to load as the scripts need to be compiled
 http://localhost:8080/MetaboAnalyst/
 
+### Step 7: Quitting Docker
+From the terminal, use Ctrl-c to exit the Payara session, and then Ctrl-d to exit the docker container.
+
 ```
 ### Step 4. MetaboAnalyst Docker History
 
