@@ -75,7 +75,7 @@ EXPOSE 4848 8009 8080 8181 6311
 
 # Download and copy MetaboAnalyst war file to deployment directory
 
-ENV METABOANALYST_VERSION 4.09
+ENV METABOANALYST_VERSION 4.53
 ENV METABOANALYST_LINK https://www.dropbox.com/s/8j9hgk4rm63qdrl/MetaboAnalyst-4.53.war?dl=0
 ENV METABOANALYST_FILE_NAME MetaboAnalyst.war
 
