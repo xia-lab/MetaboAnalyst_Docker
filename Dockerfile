@@ -1,5 +1,5 @@
-# Use Ubuntu Version 16
-FROM ubuntu:16.04
+# Use Ubuntu Version 14
+FROM ubuntu:14.04
 
 MAINTAINER Xia Lab "jasmine.chong@mail.mcgill.ca"
 
@@ -10,13 +10,13 @@ LABEL Description = "MetaboAnalyst 4.0, includes the installation of all necessa
 # Thank you to Jack Howarth for his contributions in improving the Dockerfile.
 
 RUN apt-get update && \
-    apt-get install -y software-properties-common sudo
+    apt-get install -y software-properties-common 
     
 RUN apt-get update && \
     add-apt-repository ppa:webupd8team/java && \
     apt-get update && \
     echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \ 
-    echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" >> /etc/apt/sources.list && \
+    echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list && \
     gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 && \
     gpg -a --export E084DAB9 | sudo apt-key add - && \
     apt-get update && \
@@ -46,7 +46,7 @@ RUN apt-get update && \
 
 # Install all R packages from bioconductor 
 
-RUN R -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("Rserve", "RColorBrewer", "xtable", "fitdistrplus","som", "ROCR", "RJSONIO", "gplots", "e1071", "caTools", "igraph", "randomForest", "Cairo", "pls", "pheatmap", "lattice", "rmarkdown", "knitr", "data.table", "pROC", "Rcpp", "caret", "ellipse", "scatterplot3d", "impute", "pcaMethods", "siggenes", "globaltest", "GlobalAncova", "Rgraphviz", "KEGGgraph", "preprocessCore", "genefilter", "SSPA", "sva", "limma", "xcms", "lars", "tidyverse", "pacman"))'
+RUN R -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("Rserve", "RColorBrewer", "xtable", "fitdistrplus","som", "ROCR", "RJSONIO", "gplots", "e1071", "caTools", "igraph", "randomForest", "Cairo", "pls", "pheatmap", "lattice", "rmarkdown", "knitr", "data.table", "pROC", "Rcpp", "caret", "ellipse", "scatterplot3d", "impute", "pcaMethods", "siggenes", "globaltest", "GlobalAncova", "Rgraphviz", "KEGGgraph", "preprocessCore", "genefilter", "SSPA", "sva", "limma", "xcms", "lars", "tidyverse", "pacman", "Hmisc"))'
 
 ADD rserve.conf /rserve.conf
 ADD metab4script.R /metab4script.R
@@ -75,8 +75,8 @@ EXPOSE 4848 8009 8080 8181 6311
 
 # Download and copy MetaboAnalyst war file to deployment directory
 
-ENV METABOANALYST_VERSION 4.39
-ENV METABOANALYST_LINK https://www.dropbox.com/s/zjdrjddxx4mhvbe/MetaboAnalyst-4.39.war?dl=0
+ENV METABOANALYST_VERSION 4.09
+ENV METABOANALYST_LINK https://www.dropbox.com/s/8j9hgk4rm63qdrl/MetaboAnalyst-4.53.war?dl=0
 ENV METABOANALYST_FILE_NAME MetaboAnalyst.war
 
 RUN wget --quiet -O $DEPLOY_DIR/$METABOANALYST_FILE_NAME $METABOANALYST_LINK
