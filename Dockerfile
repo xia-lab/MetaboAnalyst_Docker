@@ -1,7 +1,6 @@
 # Use Ubuntu Version 14
 FROM ubuntu:16.04
 
-MAINTAINER Xia Lab "jasmine.chong@mail.mcgill.ca"
 
 LABEL Description = "MetaboAnalyst 4.0, includes the installation of all necessary system requirements including JDK, R plus all relevant packages, and Payara Micro."
 
@@ -9,20 +8,17 @@ LABEL Description = "MetaboAnalyst 4.0, includes the installation of all necessa
 # graphviz libraries for RGraphviz), then purge apt-get lists.
 # Thank you to Jack Howarth for his contributions in improving the Dockerfile.
 
+# Install base and setup java environment. If open jdk don't work, try ADD downloaded ore
 RUN apt-get update && \
-    apt-get install -y software-properties-common sudo
-    
+    apt-get install -y software-properties-common sudo apt-transport-https apt-utils openjdk-8-jdk && \
+    update-java-alternatives --jre-headless --jre --set java-1.8.0-openjdk-amd64
+
+RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial/" >> /etc/apt/sources.list && \
+    gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 && \
+    gpg -a --export E298A3A825C0D65DFD57CBB651716619E084DAB9 | sudo apt-key add -
+
 RUN apt-get update && \
-    add-apt-repository ppa:webupd8team/java && \
-    apt-get update && \
-    echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \ 
-    echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" >> /etc/apt/sources.list && \
-    gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 && \
-    gpg -a --export E084DAB9 | sudo apt-key add - && \
-    apt-get update && \
-    apt-get install -y \   
-    oracle-java8-installer \
-    oracle-java8-set-default \
+    apt-get install -y \
     graphviz \
     imagemagick \
     libcairo2-dev \
