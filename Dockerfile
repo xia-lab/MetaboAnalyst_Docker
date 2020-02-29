@@ -9,7 +9,7 @@ LABEL Description = "MetaboAnalyst 4.0, includes the installation of all necessa
 # graphviz libraries for RGraphviz), then purge apt-get lists.
 # Thank you to Jack Howarth for his contributions in improving the Dockerfile.
 
-# Install base and setup java environment. If open jdk don't work, try ADD downloaded ore
+# Install base and setup java environment.
 RUN apt-get update && \
     apt-get install -y software-properties-common sudo apt-transport-https apt-utils openjdk-8-jdk && \
     update-java-alternatives --jre-headless --jre --set java-1.8.0-openjdk-amd64
