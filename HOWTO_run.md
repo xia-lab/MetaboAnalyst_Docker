@@ -1,6 +1,5 @@
 # Run MetaboAnalyst after installation
 
-
 ## Start docker image (temporary container)
 
 ```bash
@@ -44,10 +43,9 @@ java -jar /opt/payara/payara-micro.jar --deploymentDir /opt/payara/deployments
 ## Open web interface
 
 In your web browser go to this link  
-http://localhost:8080/MetaboAnalyst/  
-
-Note that you will have to change the MetaboAnalyst version in the link based on the WAR file.  
-The application will take a minute or two to load as the scripts need to be compiled
+<http://localhost:8080/MetaboAnalyst/>
+ 
+After you opened the page, the application will take a minute or two to load as the scripts need to be compiled.
 
 ## Quitting Docker
 
