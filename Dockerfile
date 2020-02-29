@@ -1,6 +1,7 @@
 # Use Ubuntu Version 14
 FROM ubuntu:16.04
 
+MAINTAINER Xia Lab "jasmine.chong@mail.mcgill.ca"
 
 LABEL Description = "MetaboAnalyst 4.0, includes the installation of all necessary system requirements including JDK, R plus all relevant packages, and Payara Micro."
 
