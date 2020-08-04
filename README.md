@@ -10,7 +10,42 @@ MetaboAnalyst is a web-application for comprehensive metabolomics data analysis,
 
 Please follow these directions to download Docker: https://docs.docker.com/install/ .
 
-### Step 2. Download the Git Repository
+---
+
+### Step 2. Pull from Docker Hub + Build (Option 1)
+
+The official Docker image for MetaboAnalyst is now available from Docker Hub! jsychong/metaboanalyst 
+
+```bash
+### Step 1: Pull image from Docker Hub
+docker pull jsychong/metaboanalyst
+
+### Step 2: Run the docker image, the -ti option will open an interactive Ubuntu terminal into the created container and presents a command prompt
+$ docker run -ti --rm --name metaboanalyst_docker -p 8080:8080 jsychong/metaboanalyst
+
+## The command prompt will look something like below; you are now in the shell
+root@760b678fd4bf:/# 
+
+### Step 3: Enter the script below, which opens all R libraries and starts the Rserve in daemon mode
+root@760b678fd4bf:/# Rscript /metab4script.R 
+
+# Note you should see "Rserv started in daemon mode" appear in the terminal.
+
+### Step 4: Enter the command to deploy the MetaboAnalyst WAR file
+# you will know it's ready when it says something like Payara Micro  4.1.2.181 #badassmicrofish (build 220) ready in 10,472 (ms)
+root@760b678fd4bf:/# java -jar /opt/payara/payara-micro.jar --deploymentDir /opt/payara/deployments
+
+### Step 5: In your web browser go to the link below
+### The application will take a minute or two to load as the scripts need to be compiled
+http://localhost:8080/MetaboAnalyst/
+
+### Step 6: Quitting Docker
+From the terminal, use Ctrl-c to exit the Payara session, and then Ctrl-d to exit the docker container.
+
+```
+
+---
+### Step 2. Download the Git Repository (Option 2)
 
 MetaboAnalyst_Docker is freely available from this GitHub repository. In this repository you will find the Dockerfile, a rserve.conf file, which will be used to configure Rserve, and a R script to load the necessary R packages and start Rserve. To download the MetaboAnalyst_Docker, A) clone the GitHub, or B) manually download the ZIP file under the green "Clone or download" button in the top right of the page. If you download the zipped file, make sure that you extract the files before commencing with Step 3. 
 
@@ -18,7 +53,6 @@ MetaboAnalyst_Docker is freely available from this GitHub repository. In this re
 # Option A
 # If you want to clone this repository into a different directory (X by default), specify it as the next command-line option, leaving a space between the link and your directory
 $ git clone https://github.com/xia-lab/MetaboAnalyst_Docker /Desktop/Metab4_Docker
-
 ```
 
 ### Step 3. Build and Run the Dockerfile
@@ -54,7 +88,7 @@ http://localhost:8080/MetaboAnalyst/
 From the terminal, use Ctrl-c to exit the Payara session, and then Ctrl-d to exit the docker container.
 
 ```
-### Step 4. MetaboAnalyst Docker History
+### MetaboAnalyst Docker History
 
 08-05-2020: Updated MetaboAnalyst docker (Ubuntu Bionic + R 3.6.3) + push to docker hub
 
