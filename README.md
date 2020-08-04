@@ -57,7 +57,7 @@ $ git clone https://github.com/xia-lab/MetaboAnalyst_Docker /Desktop/Metab4_Dock
 
 ### Step 3. Build and Run the Dockerfile (Option 2)
 
-As Docker was built with the intention of running a single processes, the MetaboAnalyst docker requires users to enter the built container using a Ubuntu 16.04 shell to enter 2 commands, the 1st to start Rserve and the 2nd to deploy the application on Payara Micro.
+As Docker was built with the intention of running a single processes, the MetaboAnalyst docker requires users to enter the built container using a Ubuntu 18.04 shell to enter 2 commands, the 1st to start Rserve and the 2nd to deploy the application on Payara Micro.
 
 ```bash
 ### Step 1: Change your working directory to the downloaded GitHub repository
