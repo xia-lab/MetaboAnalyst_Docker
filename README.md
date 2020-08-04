@@ -2,7 +2,7 @@
 
 ## Description 
 
-MetaboAnalyst is a web-application for comprehensive metabolomics data analysis, functional interpretation, and visualization. At its core, MetaboAnalyst permits users to perform a complete analytical workflow, from exploratory statistical analysis to network visualization of results. For users who wish to use MetaboAnalyst 4.0 locally for analysis of  their metabolomics data, we have provided the option for the application to be used as a Docker container, which is based in Ubuntu OS (Version 16.04), and installs necessary dependencies including: Java 8, library dependencies such as libnetcdf for xcms, R, R package dependencies such as Rserve, and Payara Micro.
+MetaboAnalyst is a web-application for comprehensive metabolomics data analysis, functional interpretation, and visualization. At its core, MetaboAnalyst permits users to perform a complete analytical workflow, from exploratory statistical analysis to network visualization of results. For users who wish to use MetaboAnalyst 4.0 locally for analysis of  their metabolomics data, we have provided the option for the application to be used as a Docker container, which is based in Ubuntu OS (Version 18.04), and installs necessary dependencies including: Java 8, library dependencies such as libnetcdf for xcms, R, R package dependencies such as Rserve, and Payara Micro.
 
 ## Getting Started
 
