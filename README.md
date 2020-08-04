@@ -56,6 +56,8 @@ From the terminal, use Ctrl-c to exit the Payara session, and then Ctrl-d to exi
 ```
 ### Step 4. MetaboAnalyst Docker History
 
+08-05-2020: Updated MetaboAnalyst docker + push to docker hub
+
 11-23-2018: Bug fixing + updated to MetaboAnalyst 4.39
 
 03-23-2018: Bug fixing based on user feedback
