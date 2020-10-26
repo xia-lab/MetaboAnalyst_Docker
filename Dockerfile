@@ -73,7 +73,7 @@ RUN install2.r RColorBrewer xtable fitdistrplus som ROCR RJSONIO gplots e1071 ca
 # Install all R packages from Bioconductor 
 RUN R -e 'BiocManager::install(c("impute", "pcaMethods", "siggenes", "globaltest", "GlobalAncova", "Rgraphviz", "KEGGgraph", "preprocessCore", "genefilter", "SSPA", "sva", "limma", "mzID", "xcms"))'
 
-ADD rserve.conf /rserve.conf
+ADD rserve.conf /etc/rserve.conf
 ADD metab4script.R /metab4script.R
 ADD run.sh /run.sh
 RUN chmod +x /run.sh
