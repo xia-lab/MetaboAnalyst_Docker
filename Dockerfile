@@ -50,7 +50,7 @@ RUN apt-get update && \
     littler \
     r-base \
     r-base-dev \
-    r-recommended && \ 
+    r-recommended && \
     ln -s /usr/lib/R/site-library/littler/examples/install.r /usr/local/bin/install.r && \
     ln -s /usr/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r && \
     install.r docopt && \
@@ -75,6 +75,8 @@ RUN R -e 'BiocManager::install(c("impute", "pcaMethods", "siggenes", "globaltest
 
 ADD rserve.conf /rserve.conf
 ADD metab4script.R /metab4script.R
+ADD run.sh /run.sh
+RUN chmod +x /run.sh
 
 # Download and Install Payara Micro
 # From payara/micro github - https://github.com/payara/docker-payaramicro/blob/master/Dockerfile
@@ -106,4 +108,5 @@ ENV METABOANALYST_FILE_NAME MetaboAnalyst.war
 
 RUN wget --quiet -O $DEPLOY_DIR/$METABOANALYST_FILE_NAME $METABOANALYST_LINK
 
-ENTRYPOINT ["bin/bash"]
+ENTRYPOINT ["java", "-XX:+UseContainerSupport", "-XX:MaxRAMPercentage=90.0", "-jar", "/opt/payara/payara-micro.jar"]
+CMD ["/run.sh", "--deploymentDir", "/opt/payara/deployments"]
